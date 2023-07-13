@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalog-service
+  name: config-service
   labels:
     app: config-service
 spec:
@@ -21,7 +21,7 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: [ "sh", "-c", "sleep 5"]
+                command: [ "sh", "-c", "sleep 5" ]
           ports:
             - containerPort: 8888
           env:
