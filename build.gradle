@@ -1,14 +1,14 @@
 plugins {
 	id 'java'
-	id("org.springframework.boot") version "3.1.0"
-	id("io.spring.dependency-management") version "1.1.0"
+	id 'org.springframework.boot' version '3.1.1'
+	id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = "com.polarbookshop"
-version = "0.0.1-SNAPSHOT"
+group = 'com.polarbookshop'
+version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = '17'
 }
 
 repositories {
@@ -20,18 +20,19 @@ ext {
 }
 
 dependencies {
-	implementation("org.springframework.cloud:spring-cloud-config-server")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation 'org.springframework.cloud:spring-cloud-config-server'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 dependencyManagement {
 	imports {
-		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
+
 bootBuildImage {
 	imageName = "${project.name}"
-	environment = ["BP_JVM_VERSION" : "17.*"]
+	environment = ["BP_JVM_VERSION": "17.*"]
 
 	docker {
 		publishRegistry {
